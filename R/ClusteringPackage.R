@@ -420,7 +420,8 @@ get.DegreeHubStatistic <- function(subnetwork,n.perm = 100,doPar = FALSE,n.core 
   split.fact <- factor(split.fact[1:n.perm])
   split.ind <- split(1:n.perm,split.fact)
 
-  k.random <- foreach (ind = split.ind, .combine = 'c') %dopar%
+  k.random <- foreach (ind = split.ind, .combine = 'c', .packages = "MEGENA") %dopar%
+				 
    {
     k.rand <- c()
     for (n in ind)
